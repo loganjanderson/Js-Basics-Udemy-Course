@@ -5,8 +5,8 @@
 
 // Student Score Calculator
 
-let score = 18
-let maxScore = 25
+let score = 41
+let maxScore = 98
 
 let percent = (score / maxScore) * 100;
 
