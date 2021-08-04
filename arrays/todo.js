@@ -1,15 +1,27 @@
-const todos = ['Order cat food', 'Clean Kitchen', 'Buy Food', 'Go to work', 'Exercise']
+const todos = [
+  {
+    title: "Order cat food",
+    completed: false,
+  },
+  {
+    title: "Clean Kitchen",
+    completed: true,
+  },
+  {
+    title: "Buy Food",
+    completed: true,
+  },
+  {
+    title: "Go to work",
+    completed: false,
+  },
+  { title: "Exercise", completed: false },
+];
 
-todos.shift()
-todos.splice(1, 1)
-todos.push('Finish JS course')
+const filterTodos = (todos, value) => {
+  return todos.filter((todo) => {
+    return todo.completed === value;
+  });
+};
 
-
-
-
-
-
-for (i = 0; i < todos.length; i++) {
-console.log(`${i + 1}. ${todos[i]}`)
-}
-
+console.log(filterTodos(todos, true));
