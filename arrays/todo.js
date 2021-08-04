@@ -18,10 +18,18 @@ const todos = [
   { title: "Exercise", completed: false },
 ];
 
-const filterTodos = (todos, value) => {
-  return todos.filter((todo) => {
-    return todo.completed === value;
+const sortTodos = (list) => {
+  list.sort((a, b) => {
+    if (a.title.toLowerCase() > b.title.toLowerCase()) {
+      return 1;
+    } else if (a.title.toLowerCase() < b.title.toLowerCase()) {
+      return -1;
+    } else {
+      return 0;
+    }
   });
 };
 
-console.log(filterTodos(todos, true));
+sortTodos(todos);
+
+console.log(todos);
