@@ -23,3 +23,11 @@ todos.forEach((todo) => {
   newTodo.textContent = todo.title;
   document.querySelector("body").appendChild(newTodo);
 });
+
+document.querySelector("#add-new-todo").addEventListener("click", (e) => {
+  console.log(e);
+});
+
+document.querySelector("#search").addEventListener("input", (e) => {
+  console.log(e.target.value);
+});

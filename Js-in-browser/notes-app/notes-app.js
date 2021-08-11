@@ -13,21 +13,36 @@ const notes = [
   },
 ];
 
-//Query and remove
-// const p = document.querySelector("p");
-// p.remove();
+const filters = {
+  searchText: "",
+};
 
-// query all and remove
+const renderNotes = (notes, filters) => {
+  const filteredNotes = notes.filter((note) => {
+    return note.title.toLowerCase().includes(filters.searchText.toLowerCase());
+  });
 
-const ps = document.querySelectorAll("p");
+  document.querySelector("#notes").innerHTML = "";
+  filteredNotes.forEach((note) => {
+    const noteEl = document.createElement("p");
+    noteEl.textContent = note.title;
+    document.querySelector("#notes").appendChild(noteEl);
+  });
+};
 
-ps.forEach((p) => {
-  p.textContent = "********";
-  //   console.log(p.textContent);
-  //   p.remove();
+renderNotes(notes, filters);
+
+document.querySelector("#create-note").addEventListener("click", (e) => {
+  e.target.textContent = "button was clicked";
 });
 
-// create a nre paragraph
-const newParagraph = document.createElement("p");
-newParagraph.textContent = "This is a new element from javascript";
-document.querySelector("body").appendChild(newParagraph);
+document.querySelector("#remove-all").addEventListener("click", (e) => {
+  document.querySelectorAll(".note").forEach((note) => {
+    note.remove();
+  });
+});
+
+document.querySelector("#search").addEventListener("input", function (e) {
+  filters.searchText = e.target.value;
+  renderNotes(notes, filters);
+});
